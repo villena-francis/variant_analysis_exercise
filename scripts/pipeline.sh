@@ -22,7 +22,7 @@ do
     #Index the refined BAM file
     samtools index alignment/${sample}_refined.bam
     #Calculate the most likely genotype
-    bcftools mpileup -Ou -f genome/*.fa \
+    bcftools mpileup -Ou -f genome/*.fa -T intervals/*.bed\
              alignment/${sample}_refined.bam | bcftools call -vmO z -o \
              calling/${sample}_rawcalls.vcf.gz
     #Sort and remove duplicates
