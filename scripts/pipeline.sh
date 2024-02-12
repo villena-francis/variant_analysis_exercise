@@ -15,3 +15,6 @@ do
     #Sort the BAM file by coordinates
     samtools sort -O bam -o alignment/${sample}_sorted.bam \
              alignment/${sample}_fixmate.bam
+    #Remove PCR duplicates and generate a refined BAM file
+    samtools rmdup -S alignment/${sample}_sorted.bam \
+             alignment/${sample}_refined.bam
