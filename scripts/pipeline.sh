@@ -12,3 +12,6 @@ do
     #Convert the SAM file to BAM and fill in mate information
     samtools fixmate -O bam alignment/${sample}.sam \
              alignment/${sample}_fixmate.bam
+    #Sort the BAM file by coordinates
+    samtools sort -O bam -o alignment/${sample}_sorted.bam \
+             alignment/${sample}_fixmate.bam
