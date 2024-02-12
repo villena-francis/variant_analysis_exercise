@@ -18,3 +18,5 @@ do
     #Remove PCR duplicates and generate a refined BAM file
     samtools rmdup -S alignment/${sample}_sorted.bam \
              alignment/${sample}_refined.bam
+    #Index the refined BAM file
+    samtools index alignment/${sample}_refined.bam
