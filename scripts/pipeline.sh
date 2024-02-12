@@ -30,3 +30,7 @@ do
     #Retrieve only calls with high quality
     bcftools filter -i 'QUAL>=20&&DP>=20' calling/${sample}_rawcalls.vcf.gz
 done
+
+#Intersection of detected variants in the two samples from the patient
+bcftools isec -i 'DP>=20' calling/normal_rawcalls.vcf.gz calling/tumor_rawcalls.vcf.gz \
+         -p calling/intersection
