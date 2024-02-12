@@ -25,3 +25,5 @@ do
     bcftools mpileup -Ou -f genome/*.fa \
              alignment/${sample}_refined.bam | bcftools call -vmO z -o \
              calling/${sample}_rawcalls.vcf.gz
+    #Create the index for the vcf file
+    bcftools index calling/${sample}_rawcalls.vcf.gz
