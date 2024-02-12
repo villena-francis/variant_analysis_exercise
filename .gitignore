@@ -1,0 +1,8 @@
+#Ignore dir content in..
+genome/*
+intervals/*
+raw_data/*
+#except .gitkeep files
+!genome/.gitkeep
+!intervals/.gitkeep
+!raw_data/.gitkeep
