@@ -25,12 +25,15 @@ do
     bcftools mpileup -Ou -f genome/*.fa \
              alignment/${sample}_refined.bam | bcftools call -vmO z -o \
              calling/${sample}_rawcalls.vcf.gz
+    #Sort and remove duplicates
+    bcftools sort -Ou calling/${sample}_rawcalls.vcf.gz | bcftools norm -d all -O z -o \
+             calling/${sample}_sorted_dedup.vcf.gz
     #Create the index for the vcf file
-    bcftools index calling/${sample}_rawcalls.vcf.gz
+    bcftools index calling/${sample}_sorted_dedup.vcf.gz
     #Retrieve only calls with high quality
-    bcftools filter -i 'QUAL>=20&&DP>=20' calling/${sample}_rawcalls.vcf.gz
+    bcftools filter -i 'QUAL>=20&&DP>=20' calling/${sample}_sorted_dedup.vcf.gz
 done
 
 #Intersection of detected variants in the two samples from the patient
-bcftools isec -i 'DP>=20' calling/normal_rawcalls.vcf.gz calling/tumor_rawcalls.vcf.gz \
+bcftools isec -i 'DP>=20' calling/normal_sorted_dedup.vcf.gz calling/tumor_sorted_dedup.vcf.gz \
          -p calling/intersection
