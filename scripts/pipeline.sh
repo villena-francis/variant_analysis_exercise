@@ -2,6 +2,7 @@
 bwa index genome/*.fa
 
 mkdir -p alignment
+mkdir -p calling
 
 for sample in normal tumor
 do
@@ -20,3 +21,7 @@ do
              alignment/${sample}_refined.bam
     #Index the refined BAM file
     samtools index alignment/${sample}_refined.bam
+    #Calculate the most likely genotype
+    bcftools mpileup -Ou -f genome/*.fa \
+             alignment/${sample}_refined.bam | bcftools call -vmO z -o \
+             calling/${sample}_rawcalls.vcf.gz
