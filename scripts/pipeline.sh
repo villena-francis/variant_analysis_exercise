@@ -27,3 +27,6 @@ do
              calling/${sample}_rawcalls.vcf.gz
     #Create the index for the vcf file
     bcftools index calling/${sample}_rawcalls.vcf.gz
+    #Retrieve only calls with high quality
+    bcftools filter -i 'QUAL>=20&&DP>=20' calling/${sample}_rawcalls.vcf.gz
+done
