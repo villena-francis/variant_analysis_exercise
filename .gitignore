@@ -2,6 +2,8 @@
 genome/*
 intervals/*
 raw_data/*
+alignment/*
+calling/*
 #except .gitkeep files
 !genome/.gitkeep
 !intervals/.gitkeep
