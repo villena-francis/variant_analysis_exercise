@@ -20,6 +20,7 @@ The starting files for this training were not provided due to their large size, 
 │   └── tumor_2.fq.gz
 ├── README.md
 └── scripts
+    ├── cleanup.sh
     └── pipeline.sh
 ```
 
@@ -36,4 +37,9 @@ To run the pipeline, navigate to the main directory and execute `pipeline.sh` wi
 
 ```bash
 bash scripts/pipeline.sh
+```
+To rerun the pipeline with different samples, execute `cleanup.sh` to clear the working directory and manually organize the new files into their respective folders.
+
+```bash
+bash scripts/cleanup.sh
 ```
