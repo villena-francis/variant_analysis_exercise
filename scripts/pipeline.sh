@@ -69,7 +69,7 @@ done
 
 echo -e "\e[34mMaking intersection of detected variants in the normal and tumor samples from the patient...\e[0m"
 
-bcftools isec -i 'DP>=20' calling/normal_sorted_dedup.vcf.gz calling/tumor_sorted_dedup.vcf.gz \
+bcftools isec -i 'QUAL>=20&&DP>=20' calling/normal_sorted_dedup.vcf.gz calling/tumor_sorted_dedup.vcf.gz \
          -p calling/intersection
 
 echo -e "\e[34mDone\n\e[0m"
